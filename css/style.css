@@ -15,7 +15,7 @@ body {
     grid-template-columns: 1fr 1fr;
 }
 
-header {
+.twitch-header {
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 1;
@@ -63,23 +63,79 @@ header {
 
 .filter-color {
     width: 5%;
-    border: 1px solid black;
     border-radius: 3px;
     min-width: 18px;
 }
 
 .online {
     background: greenyellow;
+    box-shadow: 0px 0px 5px 2px lightgreen;
 }
 
 
 .offline {
     background: orangered;
+    box-shadow: 0px 0px 5px 2px orangered;
+
+
 }
 
 .content {
     height: 100%;
     margin-top: 95px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.streamer-card {
+    display: grid;
+    grid-template-columns: 1fr 4fr ;
+    grid-template-rows: repeat(3,1fr);
+    border-bottom: 1px dotted lightgray;
+    padding: 25px 15px;
+}
+
+.streamer-img {
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+    max-height: 100px;
+    width: auto;
+    border-radius: 5px;
+}
+
+.streamer-card-item-2, .streamer-card-item-3, .streamer-card-item-4 {
+    grid-column: 2 / -1;
+    margin: auto 10px;
+}
+
+.streamer-card-item-2 {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.streamer-card-item-3 {
+    font-size: 1.2em;
+}
+
+.streamer-card-item-4 {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: gray;
+}
+
+
+/** IPAD PRO ONLY*/
+@media only screen and (height : 1366px) and (width : 1024px) {
+    body {
+        font-size: 2em;
+    }
+
+    .content {
+        margin-top: 145px;
+    }
 }
 
 
@@ -90,26 +146,11 @@ header {
 }
 
 
-
 @media only screen and (max-height : 800px) {
     .content {
         margin-top: 65px;
     }
 }
-
-
-
-@media only screen and (height : 1366px) and (width : 1024px) {
-
-    body {
-        font-size: 2em;
-    }
-
-    .content {
-        margin-top: 145px;
-    }
-}
-
 
 
 @media only screen and (max-height : 600px) {
