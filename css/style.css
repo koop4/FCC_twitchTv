@@ -150,6 +150,15 @@ body {
     body {
         font-size: 2em;
     }
+    .streamer-card {
+        padding-left: 40px;
+        padding-right: 40px;
+        font-size: 1.2em;
+        grid-column-gap: 10px;
+    }
+    .streamer-img {
+        max-height: 250px;
+    }
 }
 
 
