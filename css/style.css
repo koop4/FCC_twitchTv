@@ -3,7 +3,7 @@ body {
 }
 
 .navbar {
-    position: absolute;
+    position: sticky;
     top: 0px;
     left: 0px;
     min-height: 50px;
@@ -11,7 +11,7 @@ body {
     min-width: 300px;
     width: 100%;
     display: grid;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
 }
 
@@ -19,70 +19,88 @@ body {
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 1;
-    grid-row-end: 3;
-    display: flex;
+    grid-row-end: 2;
     width: 100%;
     background: #6441a5;
+    display: flex;
+    align-items: center;
 }
 
 .title {
     color: white;
     font-weight: 700;
     font-size: 1.2em;
-    margin: auto 0px;
+    margin: 0px;
     min-width: 250px;
     text-align: center;
-    box-sizing: border-box;
-    flex: 1
+    width: 100%;
+    align-self: center;
 }
 
 .refresh {
-    height: 30px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 45%;
     margin: auto 10px;
-    box-sizing: border-box;
     cursor: pointer;
 }
 
 .filter {
     display: flex;
+    align-items: center;
     width: 100%;
-    padding: 3px;
-    background: lightgray;
+    padding: 5px;
+    background: #eee;
     cursor: pointer;
-    opacity: 0.4;
     box-sizing: border-box;
 }
 
-.filter.active {
-    opacity: 1;
+.first-filter {
+    justify-content: flex-end;
 }
 
 .filter-title {
     margin: 0px 5px;
 }
 
+.filter-title, .filter-color {
+    opacity: 0.3;    
+}
+
+.filter.active {
+    opacity: 1;
+}
+
 .filter-color {
     width: 5%;
     border-radius: 3px;
-    min-width: 18px;
+    min-height: 20px;
+    min-width: 20px;
+    margin-top: -3px;
+    margin-left: 5px;
 }
 
 .online {
-    background: greenyellow;
     box-shadow: 0px 0px 5px 2px lightgreen;
 }
 
-
 .offline {
-    background: orangered;
-    box-shadow: 0px 0px 5px 2px orangered;
-
-
+    box-shadow: 0px 0px 5px 2px orangered; 
 }
+
+.lightgreen {
+    background: greenyellow;
+}
+
+.orangered {
+    background: orangered;
+}
+
+
 
 .content {
     height: 100%;
-    margin-top: 95px;
     display: flex;
     flex-direction: column;
 }
@@ -132,29 +150,5 @@ body {
     body {
         font-size: 2em;
     }
-
-    .content {
-        margin-top: 145px;
-    }
 }
 
-
-@media only screen and (max-height : 1000px) {
-    .content {
-        margin-top: 90px;
-    }
-}
-
-
-@media only screen and (max-height : 800px) {
-    .content {
-        margin-top: 65px;
-    }
-}
-
-
-@media only screen and (max-height : 600px) {
-    .content {
-        margin-top: 65px;
-    }
-}
