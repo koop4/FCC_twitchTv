@@ -76,3 +76,44 @@ header {
 .offline {
     background: orangered;
 }
+
+.content {
+    height: 100%;
+    margin-top: 95px;
+}
+
+
+@media only screen and (max-height : 1000px) {
+    .content {
+        margin-top: 90px;
+    }
+}
+
+
+
+@media only screen and (max-height : 800px) {
+    .content {
+        margin-top: 65px;
+    }
+}
+
+
+
+@media only screen and (height : 1366px) and (width : 1024px) {
+
+    body {
+        font-size: 2em;
+    }
+
+    .content {
+        margin-top: 145px;
+    }
+}
+
+
+
+@media only screen and (max-height : 600px) {
+    .content {
+        margin-top: 65px;
+    }
+}
