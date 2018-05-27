@@ -145,8 +145,41 @@ body {
 }
 
 
+
+@media screen and ( min-width: 700px ) {
+    .streamer-card {
+        font-size: 1.6em;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .streamer-img {
+        max-height: 180px;
+        justify-self: end;
+    }
+}
+
+
+@media screen and ( min-width: 1000px ) {
+
+    main {
+        margin: 0px 50px 
+    }
+
+    .streamer-card {
+        font-size: 2em;
+        grid-column-gap: 30px;
+        grid-template-columns: 1fr 2fr;
+    }
+    .streamer-img {
+        max-height: 220px;
+    }
+
+}
+
+
 /** IPAD PRO ONLY*/
-@media only screen and (height : 1366px) and (width : 1024px) {
+@media only screen and (height : 1366px) and (width : 1024px),
+       only screen and (height : 1024px) and (width : 1366px) {
     body {
         font-size: 2em;
     }
@@ -172,3 +205,76 @@ body {
         max-height: 170px;
     }
 }
+
+/** IPAD landscape */
+@media only screen and (height : 768px) and (width : 1024px) {
+    .streamer-card {
+        font-size: 1.6em;
+        grid-column-gap: 10px;
+    }
+    .streamer-img {
+        justify-self: end;
+        max-height: 170px;
+    }
+}
+
+/** IPHONE 5 LANDSCAPE */
+@media only screen 
+and (min-device-width : 320px)
+and (max-device-width : 568px) 
+and (orientation : landscape) {
+    .streamer-card {
+        padding: 0px 15px;
+        border: none;
+        margin: 15px 0px;
+    }
+}
+
+/** IPHONE 6/7/8  */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    .streamer-card {
+        border: none;
+        align-self: center;
+    }
+}
+
+
+/** IPHONE 6 LANDSCAPE */
+@media only screen 
+and (min-device-width : 414px) 
+and (max-device-width : 736px) {
+    .streamer-card {
+        align-self: center;
+    }
+}
+
+
+/* IPHONE X */
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+    .streamer-card {
+        padding: 15px 15px;
+        border: none;
+    }
+}
+
+/* IPHONE X  LANDSCAPE*/
+@media only screen 
+    and (device-width : 812px) 
+    and (device-height : 375px) 
+    and (-webkit-device-pixel-ratio : 3) {
+    .streamer-card {
+        padding: 0px 15px;
+        margin-top: 15px;
+        border: none;
+    }
+    .streamer-img {
+        justify-self: end;
+    }
+}
+
+
