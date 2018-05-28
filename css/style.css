@@ -112,6 +112,9 @@ body {
     grid-template-rows: repeat(3,1fr);
     border-bottom: 1px dotted lightgray;
     padding: 25px 15px;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .streamer-img {
@@ -149,11 +152,11 @@ body {
 @media screen and ( min-width: 700px ) {
     .streamer-card {
         font-size: 1.6em;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 2fr;
     }
 
     .streamer-img {
-        max-height: 180px;
+        max-height: 135px;
         justify-self: end;
     }
 }
@@ -166,12 +169,12 @@ body {
     }
 
     .streamer-card {
-        font-size: 2em;
+        font-size: 1.7em;
         grid-column-gap: 30px;
         grid-template-columns: 1fr 2fr;
     }
     .streamer-img {
-        max-height: 220px;
+        max-height: 145px;
     }
 
 }
@@ -184,13 +187,15 @@ body {
         font-size: 2em;
     }
     .streamer-card {
+        grid-template-columns: 4fr 15fr;
+        width: 100%;
         padding-left: 40px;
         padding-right: 40px;
         font-size: 1.2em;
         grid-column-gap: 10px;
     }
     .streamer-img {
-        max-height: 250px;
+        max-height: 175px;
     }
 }
 
@@ -214,21 +219,38 @@ body {
     }
     .streamer-img {
         justify-self: end;
-        max-height: 170px;
+        max-height: 130px;
+    }
+    .streamer-card-item-4 {
+        margin-top: 0px;
     }
 }
 
 /** IPHONE 5 LANDSCAPE */
 @media only screen 
-and (min-device-width : 320px)
-and (max-device-width : 568px) 
+and (device-height : 320px)
+and (device-width : 568px) 
 and (orientation : landscape) {
     .streamer-card {
         padding: 0px 15px;
         border: none;
         margin: 15px 0px;
+        min-height: 30%;
     }
 }
+
+
+/** IPHONE 5 PORTRAIT */
+@media only screen 
+and (device-width : 320px)
+and (device-height : 568px)  {
+    .streamer-card {
+        border: none;
+        margin-top: 15px;
+        padding: 0px;
+    }
+}
+
 
 /** IPHONE 6/7/8  */
 @media only screen 
@@ -244,9 +266,11 @@ and (max-device-width : 667px) {
 /** IPHONE 6 LANDSCAPE */
 @media only screen 
 and (min-device-width : 414px) 
-and (max-device-width : 736px) {
+and (max-device-width : 736px) 
+and (orientation : landscape) {
     .streamer-card {
         align-self: center;
+        min-height: 35%;
     }
 }
 
@@ -268,13 +292,19 @@ and (max-device-width : 736px) {
     and (device-height : 375px) 
     and (-webkit-device-pixel-ratio : 3) {
     .streamer-card {
+        font-size: 1em;
         padding: 0px 15px;
         margin-top: 15px;
         border: none;
+        min-height: 30%;        
     }
     .streamer-img {
         justify-self: end;
     }
+    .streamer-card-item-4 {
+        margin-top: 0px;
+    }
+
 }
 
 
