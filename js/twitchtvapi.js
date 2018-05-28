@@ -95,7 +95,17 @@ const displayData = function() {
 }
 
 
-const reload = function() {
+function reload() {
+
+
+    let content = document.getElementsByTagName("main")[0];
+    content.innerHTML = `<article class="streamer-card"> 
+        <img class="streamer-img" src="https://static-cdn.jtvnw.net/jtv_user_pictures/esl_sc2-profile_image-d6db9488cec97125-300x300.jpeg" alt=""> 
+        <p class="streamer-card-item-2">I M LOADING</p>
+        <p class="streamer-card-item-3">just wait </p>
+        <p class="streamer-card-item-4">results will come soon</p>
+    </article>`;
+
     totalResponse = 0 ;
     streamers.forEach( (streamer,idx) => {
         fetchUser(streamer,idx);
