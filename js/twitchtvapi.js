@@ -7,6 +7,11 @@ var streamers = [
     { name: 'thevalentinanappi' }
 ]
 
+let totalResponse = 0;
+
+var isFiltering = false;
+var filter = ['online', 'offline'];
+
 const fetchUser = function (streamer, idx) {
     let apiUrl = 'https://wind-bow.glitch.me/twitch-api/users/' + streamer.name;
     let xmlHttp = new XMLHttpRequest();
@@ -43,11 +48,14 @@ const fetchStreams = function(streamer,idx) {
 };
 
 
-const displayData = function(filter) {
+const displayData = function() {
     totalResponse++;
-    if(totalResponse === streamers.length) {
-
-        let itemsToDisplay = streamers;
+    if(totalResponse === streamers.length || isFiltering) {
+        let itemsToDisplay;
+        if(filter.length === 2)
+            itemsToDisplay = streamers;
+        else 
+            itemsToDisplay = streamers.filter( i => filter.indexOf('online')>=0 ? i.title : !i.title);
         
         let content = document.getElementsByTagName("main")[0];
         content.innerHTML = '';
@@ -81,20 +89,38 @@ const displayData = function(filter) {
             }
 
             content.appendChild(article)
-
         });
+
+        isFiltering = false;
+        
     }
 }
 
-let totalResponse = 0;
 
-streamers.forEach( (streamer,idx) => {
-    fetchUser(streamer,idx);
-    fetchStreams(streamer,idx);
-})
+const reload = function() {
+    streamers.forEach( (streamer,idx) => {
+        fetchUser(streamer,idx);
+        fetchStreams(streamer,idx);
+    });
+}
 
+reload();
 
-
+function filterStreamer(s) {
+    // se sta filtrando o si sta rimuovendo l ultimo filtro non fa nulla
+    if (isFiltering || ( filter.length === 1 && filter.indexOf(s)>=0 ) ) return;
+    
+    isFiltering = true;
+    let currentFilter = document.getElementById(s+'Filter');
+    if (currentFilter.classList.value.indexOf('active') >= 0) {
+        currentFilter.classList.value = currentFilter.classList.value.replace('active', '');
+        filter.splice(filter.indexOf(s),1);
+    } else {
+        currentFilter.classList.value = currentFilter.classList.value + 'active';
+        filter.push(s);
+    }
+    displayData();
+}
 
 
 

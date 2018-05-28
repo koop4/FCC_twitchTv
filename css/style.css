@@ -52,7 +52,6 @@ body {
     width: 100%;
     padding: 5px;
     background: #eee;
-    cursor: pointer;
     box-sizing: border-box;
 }
 
@@ -68,7 +67,7 @@ body {
     opacity: 0.3;    
 }
 
-.filter.active {
+.active .filter-title,  .active .filter-color {
     opacity: 1;
 }
 
@@ -78,6 +77,7 @@ body {
     min-height: 20px;
     min-width: 20px;
     margin-top: -3px;
+    cursor: pointer;
     margin-left: 5px;
 }
 
