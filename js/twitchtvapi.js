@@ -1,4 +1,3 @@
-
 var streamers = [ 
     { name: 'freecodecamp' },
     { name: 'scarlettm' },
@@ -96,8 +95,6 @@ const displayData = function() {
 
 
 function reload() {
-
-
     let content = document.getElementsByTagName("main")[0];
     content.innerHTML = `<article class="streamer-card"> 
         <img class="streamer-img" src="https://static-cdn.jtvnw.net/jtv_user_pictures/esl_sc2-profile_image-d6db9488cec97125-300x300.jpeg" alt=""> 
@@ -105,13 +102,12 @@ function reload() {
         <p class="streamer-card-item-3">just wait </p>
         <p class="streamer-card-item-4">results will come soon</p>
     </article>`;
-
     totalResponse = 0 ;
     streamers.forEach( (streamer,idx) => {
         fetchUser(streamer,idx);
         fetchStreams(streamer,idx);
     });
-    setTimeout(displayData, 1500);
+    setTimeout(displayData, 1500); // to be promisify, imma lazy bitch
 }
 
 reload();
@@ -119,7 +115,6 @@ reload();
 function filterStreamer(s) {
     // se sta filtrando o si sta rimuovendo l ultimo filtro non fa nulla
     if (isFiltering || ( filter.length === 1 && filter.indexOf(s)>=0 ) ) return;
-    
     isFiltering = true;
     let currentFilter = document.getElementById(s+'Filter');
     if (currentFilter.classList.value.indexOf('active') >= 0) {
@@ -131,21 +126,3 @@ function filterStreamer(s) {
     }
     displayData();
 }
-
-
-
-//  function fetchDatafn(str, cb) {
-//     let apiUrl = 'https://wind-bow.glitch.me/twitch-api/users/'+str.name;
-    
-//     var xmlHttp = new XMLHttpRequest();
-//     xmlHttp.onreadystatechange = function() { 
-//          if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-//              let user = JSON.parse(xmlHttp.responseText);
-//              str.img = user.logo;
-//              cb();
-//          }
-//     }
-//     xmlHttp.open("GET", apiUrl, true); // true for asynchronous 
-//     xmlHttp.send(null);
- 
-//  };
