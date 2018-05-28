@@ -4,7 +4,8 @@ var streamers = [
     { name: 'scarlettm' },
     { name: 'dendi' },
     { name: 'admiralbulldog' },
-    { name: 'thevalentinanappi' }
+    { name: 'thevalentinanappi' },
+    { name: 'esl_sc2' }
 ]
 
 let totalResponse = 0;
@@ -16,7 +17,7 @@ const fetchUser = function (streamer, idx) {
     let apiUrl = 'https://wind-bow.glitch.me/twitch-api/users/' + streamer.name;
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = cb;
-    xmlHttp.open("GET", apiUrl); // true for asynchronous 
+    xmlHttp.open("GET", apiUrl); 
     xmlHttp.send(null);
     function cb() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
@@ -31,7 +32,7 @@ const fetchStreams = function(streamer,idx) {
     let apiUrl = 'https://wind-bow.glitch.me/twitch-api/streams/'+streamer.name;
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = cb;
-    xmlHttp.open("GET", apiUrl); // true for asynchronous 
+    xmlHttp.open("GET", apiUrl); 
     xmlHttp.send(null);
     function cb() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
@@ -42,15 +43,12 @@ const fetchStreams = function(streamer,idx) {
                 streamers[idx].game = streamData.stream.game
                 streamers[idx].title = streamData.stream.channel.status;
             }
-            displayData();
         }
     }
 };
 
 
 const displayData = function() {
-    totalResponse++;
-    if(totalResponse === streamers.length || isFiltering) {
         let itemsToDisplay;
         if(filter.length === 2)
             itemsToDisplay = streamers;
@@ -73,10 +71,12 @@ const displayData = function() {
             user.classList.add("streamer-card-item-2");
             user.innerHTML = item.name;
 
-            let game  = document.createElement('p');
+            let game  = document.createElement('a');
             game.classList.add("streamer-card-item-3");
-            game.innerHTML = item.game || 'offline';
+            game.setAttribute("href", 'https://www.twitch.tv/'+item.name);
+            game.setAttribute("target", '_blank');
             
+            game.innerHTML = item.game || 'offline';
             article.appendChild(img);
             article.appendChild(user);
             article.appendChild(game);
@@ -92,16 +92,16 @@ const displayData = function() {
         });
 
         isFiltering = false;
-        
-    }
 }
 
 
 const reload = function() {
+    totalResponse = 0 ;
     streamers.forEach( (streamer,idx) => {
         fetchUser(streamer,idx);
         fetchStreams(streamer,idx);
     });
+    setTimeout(displayData, 1500);
 }
 
 reload();
