@@ -156,7 +156,7 @@ body {
     }
 
     .streamer-img {
-        max-height: 135px;
+        max-height: 115px;
         justify-self: end;
     }
 }
@@ -172,9 +172,6 @@ body {
         font-size: 1.7em;
         grid-column-gap: 30px;
         grid-template-columns: 1fr 2fr;
-    }
-    .streamer-img {
-        max-height: 145px;
     }
 
 }
